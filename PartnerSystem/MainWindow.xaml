@@ -1,0 +1,31 @@
+﻿<Window x:Class="PartnerSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Система управления партнерами" Height="600" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
+            <TextBlock Text="Список партнеров" FontSize="20" FontWeight="Bold"/>
+            <Button Content="Добавить партнера" Click="AddPartnerButton_Click" Margin="10,0,0,0"/>
+        </StackPanel>
+
+        <ListView Grid.Row="1" ItemsSource="{Binding Partners}" SelectedItem="{Binding SelectedPartner}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Тип | Наименование" 
+                                   DisplayMemberBinding="{Binding Type}"/>
+                    <GridViewColumn Header="Телефон" 
+                                   DisplayMemberBinding="{Binding Phone}"/>
+                    <GridViewColumn Header="Рейтинг" 
+                                   DisplayMemberBinding="{Binding Rating}"/>
+                    <GridViewColumn Header="Скидка" 
+                                   DisplayMemberBinding="{Binding Discount, StringFormat={}{0}%}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
